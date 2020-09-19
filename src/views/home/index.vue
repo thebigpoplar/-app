@@ -1,6 +1,11 @@
 <template>
   <div class="box">
-    <header class="header">home content</header>
+    <header class="header">
+      <div class="he_l"><van-icon name="points" size="25" /></div>
+      <div class="he_c"> <van-search v-model="value" shape="round" background="red" placeholder="请输入搜索关键词" @focus="homesearch" /></div>
+      <div class="he_r"><van-icon name="user-circle-o" size="25" /></div>
+     
+    </header>
     <div class="content" ref="content">
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh" success-text="刷新成功">
         <Banner :bannerlist="bannerlist" />
@@ -35,6 +40,7 @@ import {
   List,
   PullRefresh,
   Icon,
+  Search,
 } from "vant";
 import Prolist from "./components/Prolist";
 import { getBannerlist, getProlist } from "./../../api/index";
@@ -49,9 +55,11 @@ Vue.use(VanImage);
 Vue.use(List);
 Vue.use(PullRefresh);
 Vue.use(Icon);
+Vue.use(Search);
 export default {
   data() {
     return {
+      value:'华为牛逼',
       bannerlist: [],
       prolist: [],
       loading: false,
@@ -62,7 +70,9 @@ export default {
     };
   },
   methods: {
-
+    homesearch(){
+      this.$router.push('/search')
+    },
     backtop() {
       let aa = this;
       let a = setInterval(function () {
@@ -107,9 +117,9 @@ export default {
     scrollfun() {
       // if (document.getElementById("content").scrollTop > 450) {
       if (this.$refs.content.scrollTop > 450) {
-        this.backTop = true;//显示
+        this.backTop = true; //显示
       } else {
-        this.backTop = false;//隐藏
+        this.backTop = false; //隐藏
       }
     },
   },
@@ -138,6 +148,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header{
+  background: red;
+  display: flex;
+  align-items: center;
+  .he_l{
+    color: white;
+    text-align: center;
+    width: .32rem;
+    margin-left: 8px;
+  }
+  .he_c{
+    flex: 1;
+  }
+  .he_r{
+    color: white;
+    text-align: center;
+    width: .30rem;
+    margin-right: 10px;
+    margin-top: 4px;
+  }
+}
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;

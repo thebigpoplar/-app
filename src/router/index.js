@@ -98,6 +98,20 @@ const routes = [
       default:() => import(/* webpackChunkName: "order" */ '../views/order/add.vue'),
     }
   },
+  {//去搜素页面
+    path:'/search',
+    name:'Search',
+    components:{ 
+      default:() => import(/* webpackChunkName: "search" */ '../views/search/index.vue'),
+    }
+  },
+  {//去相同品牌的列表
+    path:'/samebrand',
+    name:'Samebrand',
+    components:{ 
+      default:() => import(/* webpackChunkName: "search" */ '../views/search/list.vue'),
+    }
+  },
  
 ]
 

@@ -85,3 +85,9 @@ export function postCartConfirmOrder(params){
 export function postConfirmPaymentData(params){
     return request.post('/order/ConfirmPaymentData',params)
 }
+/**
+ * 删除支付的商品
+ */
+export function deleteCheck(params){
+    return request.post('/order/deleteCheck',params)
+}
