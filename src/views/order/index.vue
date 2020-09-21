@@ -82,7 +82,7 @@ export default {
       userid: localStorage.getItem("userid"),
       time: this.$route.params.time,
     }).then((res) => {
-      console.log(res,'pp')
+      // console.log(res,'pp')
       this.list = res.data.data; //将后端查询返回给前端接收渲染
       // 再进行地址的判断,如果第一个商品有地址就用第一个商品的地址,否者就开始查询 用户的地址,如果有就显示,没有就显示flag=false
       if(this.list[0].tel.length===0){
@@ -93,7 +93,7 @@ export default {
       }).then(res1=>{
         console.log(res1.data.data.length)
         if(res1.data.data.length!==0){
-          console.log(res1,'2131')
+          // console.log(res1,'2131')
           // 有默认地址就直接写入页面
           this.falg = true
           // console.log(res1.data.data[0].name)

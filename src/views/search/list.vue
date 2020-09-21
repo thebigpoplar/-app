@@ -2,7 +2,7 @@
   <div class="box">
     <header class="header">
       <div class="he_l">
-        <van-icon name="arrow-left" size="25" />
+        <van-icon name="arrow-left" @click="$router.go(-2)" size="25" />
       </div>
       <div class="he_c">
         <van-search v-model="value" shape="round" background="#fff" placeholder="请输入搜索关键词" @focus="searchall" />

@@ -1,9 +1,11 @@
 <template>
   <div class="box">
     <header class="header">
-      <div class="he_l"><van-icon name="points" size="25" /></div>
+      <div class="he_l"><van-icon name="points" size="25" @click="$router.push('/kind')" /></div>
       <div class="he_c"> <van-search v-model="value" shape="round" background="red" placeholder="请输入搜索关键词" @focus="homesearch" /></div>
-      <div class="he_r"><van-icon name="user-circle-o" size="25" /></div>
+      <div class="he_r" v-if="flag"><van-icon name="user-circle-o" size="25" /></div>
+      <div class="he_r" v-else @click="$router.push('/login')">登录</div>
+
      
     </header>
     <div class="content" ref="content">
@@ -59,6 +61,7 @@ Vue.use(Search);
 export default {
   data() {
     return {
+      flag:true,
       value:'华为牛逼',
       bannerlist: [],
       prolist: [],
@@ -136,8 +139,12 @@ export default {
         // document.getElementById("content").addEventListener("scroll", this.scrollfun);
         this.$refs.content.addEventListener("scroll", this.scrollfun);
       });
+      if(localStorage.getItem('loginState')==='false'){ //本地判断首页面的登录状态登录显示我的图标,否者显示登录
+        this.flag=false
+      }else{
+        this.flag = true
+      }
   },
-
   components: {
     Prolist,
     Banner,
